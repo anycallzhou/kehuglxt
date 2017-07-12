@@ -48,7 +48,7 @@ public class CustomerServlet extends BaseServlet {
 
 
 
-        request.setAttribute("msg", "cnm");
+        request.setAttribute("msg", "添加成功");
 
         return "/msg.jsp";
     }

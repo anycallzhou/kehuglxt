@@ -1,5 +1,6 @@
 package dao;
 
+import cn.itcast.jdbc.TxQueryRunner;
 import domain.Customer;
 import org.apache.commons.dbutils.QueryRunner;
 
@@ -8,8 +9,18 @@ import org.apache.commons.dbutils.QueryRunner;
  */
 public class CustomerDao
 {
-    private QueryRunner
+    private TxQueryRunner query =new TxQueryRunner();
+
+
     public void add(Customer customer){
-        return;
+        try {
+            String sql = "insert into t_customer values (?,?,?,?,?,?)";
+            Object[] params = {customer.getId(),customer.getName(),customer.getGender(),customer.getPhone(),customer.getEmail(),customer.getDescription()};
+             query.update(sql,params);
+        }catch (Exception e){
+            throw  new RuntimeException(e);
+        }
+
+
     }
 }
